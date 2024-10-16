@@ -437,3 +437,111 @@ body {
     transform: translate(-20%, -50%);
   }
 }
+
+/* Add these styles to your existing globals.css file */
+
+/* Contact page specific styles */
+.contact-page {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: "NeueMontreal", Arial, Helvetica, sans-serif;
+  padding: var(--gap-padding);
+}
+
+.contact-page h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+.contact-page .form-col {
+  margin-bottom: 2rem;
+}
+
+.contact-page .form-col h5 {
+  font-size: 0.875rem;
+  color: var(--color-gray);
+  margin-bottom: 0.5rem;
+}
+
+.contact-page .form-col label {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.contact-page .form-col input,
+.contact-page .form-col textarea {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-gray);
+  color: var(--foreground);
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  transition: border-color 0.3s ease;
+}
+
+.contact-page .form-col input:focus,
+.contact-page .form-col textarea:focus {
+  outline: none;
+  border-bottom-color: var(--foreground);
+}
+
+.contact-page .btn-contact-send {
+  margin-top: 2rem;
+}
+
+.contact-page .btn-round {
+  background-color: #455ce9;
+  color: var(--color-white);
+  border: none;
+  border-radius: 9999px;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-page .btn-round:hover {
+  background-color: #3346c7;
+}
+
+.contact-page .contact-details h5 {
+  font-size: 0.875rem;
+  color: var(--color-gray);
+  margin-bottom: 1rem;
+}
+
+.contact-page .contact-details ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.contact-page .contact-details ul li {
+  margin-bottom: 0.5rem;
+}
+
+.contact-page .contact-details a {
+  color: var(--foreground);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-page .contact-details a:hover {
+  color: #455ce9;
+}
+
+@media (max-width: 768px) {
+  .contact-page {
+    padding: calc(var(--gap-padding) / 2);
+  }
+
+  .contact-page h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+}
