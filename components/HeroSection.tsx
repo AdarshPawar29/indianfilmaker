@@ -14,74 +14,75 @@ interface RollProps {
 
 const HeroSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const nameWrapRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    if (!nameWrapRef.current || !containerRef.current) return;
+
     let direction = 1; // 1 = forward, -1 = backward scroll
 
-    const roll = (
-      target: string,
-      vars: RollProps,
-      reverse: boolean = false
-    ) => {
-      const element = document.querySelector(target) as HTMLElement;
-      if (!element) return gsap.timeline();
+    const element = nameWrapRef.current;
+    const container = containerRef.current;
 
-      const clone = element.cloneNode(true) as HTMLElement;
-      element.parentNode?.appendChild(clone);
+    // Remove any existing clones
+    const existingClone = element.parentNode?.querySelector(".name-wrap-clone");
+    if (existingClone) {
+      existingClone.remove();
+    }
 
-      const tl = gsap.timeline({
-        repeat: -1,
-        onReverseComplete() {
-          this.totalTime(this.rawTime() + this.duration() * 10);
-        },
+    // Create a single clone
+    const clone = element.cloneNode(true) as HTMLElement;
+    clone.classList.add("name-wrap-clone");
+    element.parentNode?.appendChild(clone);
+
+    const setPositions = () => {
+      const width = element.offsetWidth;
+      gsap.set(clone, {
+        position: "absolute",
+        top: element.offsetTop,
+        left: width,
+        width: width,
       });
-
-      const positionClone = () => {
-        gsap.set(clone, {
-          position: "absolute",
-          top: element.offsetTop,
-          left:
-            element.offsetLeft +
-            (reverse ? -element.offsetWidth : element.offsetWidth),
-        });
-      };
-
-      positionClone();
-
-      tl.to([element, clone], {
-        xPercent: reverse ? 100 : -100,
-        ...vars,
-        ease: vars.ease || "none",
-      });
-
-      const resizeObserver = new ResizeObserver(() => {
-        const time = tl.totalTime();
-        tl.pause();
-        positionClone();
-        tl.resume();
-        tl.totalTime(time);
-      });
-
-      resizeObserver.observe(element);
-
-      return tl;
     };
 
-    const roll1 = roll(".big-name .name-wrap", { duration: 18 });
+    setPositions();
 
-    const scroll = ScrollTrigger.create({
-      trigger: containerRef.current,
-      onUpdate(self) {
+    const tl = gsap.timeline({
+      repeat: -1,
+      onReverseComplete() {
+        this.totalTime(this.rawTime() + this.duration() * 10);
+      },
+    });
+
+    tl.to([element, clone], {
+      xPercent: -100,
+      ease: "none",
+      duration: 10,
+    });
+
+    ScrollTrigger.create({
+      trigger: container,
+      start: "top top",
+      end: "bottom bottom",
+      onUpdate: (self) => {
         if (self.direction !== direction) {
           direction *= -1;
-          gsap.to([roll1], { timeScale: direction, overwrite: true });
+          gsap.to(tl, { timeScale: direction, overwrite: true });
         }
       },
     });
 
+    const resizeObserver = new ResizeObserver(() => {
+      setPositions();
+      tl.invalidate().restart();
+      ScrollTrigger.refresh();
+    });
+
+    resizeObserver.observe(element);
+
     return () => {
-      scroll.kill();
-      roll1.kill();
+      resizeObserver.disconnect();
+      tl.kill();
     };
   }, []);
 
@@ -104,7 +105,7 @@ const HeroSection: React.FC = () => {
       <div className="big-name">
         <div className="name-h1">
           <h1 className="font-neue text-white text-xl">
-            <span className="name-wrap">
+            <span ref={nameWrapRef} className="name-wrap">
               Bhavesh Katwale<span className="spacer">—</span>
             </span>
           </h1>
