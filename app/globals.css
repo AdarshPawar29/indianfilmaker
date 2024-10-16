@@ -84,10 +84,13 @@ body {
 }
 
 .personal-image {
-  top: -10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 110%;
+  height: 100%;
   background: #999d9e;
+  position: relative;
 }
 
 .personal-image img {
