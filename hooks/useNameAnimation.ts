@@ -44,7 +44,7 @@ export const useNameAnimation = () => {
     tl.to([element, clone], {
       xPercent: -100,
       ease: "none",
-      duration: 10,
+      duration: 20,
     });
 
     setTimeline(tl);

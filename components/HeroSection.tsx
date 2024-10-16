@@ -25,9 +25,9 @@ const HeroSection: React.FC = () => {
 
       <div className="overlay get-height">
         <div className="hanger">
-          <p className="font-neue text-xl">
+          <p className="font-neue text-white text-xl">
             <span>Located </span>
-            <span>in India </span>
+            <span>in Mumbai, India </span>
           </p>
           <Image
             src="/hanger.svg"
@@ -74,7 +74,8 @@ const HeroSection: React.FC = () => {
         <div className="name-h1">
           <h1 className="font-neue text-white text-xl">
             <span ref={nameWrapRef} className="name-wrap">
-              Bhavesh K.<span className="spacer">—</span>
+              Bhavesh K.<span className="spacer">—</span>Bhavesh K.
+              <span className="spacer">—</span>
             </span>
           </h1>
         </div>
