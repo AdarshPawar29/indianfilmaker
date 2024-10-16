@@ -3,6 +3,8 @@ import nodemailer from "nodemailer";
 
 declare module "nodemailer";
 
+export const runtime = "edge";
+
 export async function POST(req: Request) {
   const { to, subject, body } = await req.json();
 
