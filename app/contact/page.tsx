@@ -201,8 +201,8 @@ export default function ContactPage() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="tel:+31627847430" className="hover:underline">
-                      +31 6 27 84 74 30
+                    <Link href="tel:+919619511017" className="hover:underline">
+                      +91 96195 11017
                     </Link>
                   </li>
                 </ul>
@@ -222,7 +222,7 @@ export default function ContactPage() {
                   {[
                     {
                       name: "YouTube",
-                      url: "",
+                      url: "https://www.youtube.com/@BhaveshKatwaleplus",
                     },
                     {
                       name: "Instagram",
