@@ -15,7 +15,7 @@ const HeroSection: React.FC = () => {
       <div className="personal-image">
         <Image
           src="/DSC07033.jpg"
-          alt="Bhavesh Katwale"
+          alt="Bhavesh Katwale img"
           width={0}
           height={0}
           sizes="100vw"
