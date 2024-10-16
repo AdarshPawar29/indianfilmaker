@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { useNameAnimation } from "../hooks/useNameAnimation";
+import { useNameAnimation } from "@/hooks/useNameAnimation";
 
 const HeroSection: React.FC = () => {
   const { containerRef, nameWrapRef } = useNameAnimation();

@@ -1,11 +1,11 @@
-import Header from "@/components/Header";
+import NavigationBar from "@/components/NavBar";
 import Hero from "@/components/HeroSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <>
-      <Header />
+      <NavigationBar />
       <Hero />
       <Footer />
     </>
