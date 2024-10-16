@@ -56,7 +56,7 @@ export default function ContactPage() {
       <div className="container mx-auto px-4 py-16">
         <div className="flex justify-between items-start mb-20">
           <h1 className="text-6xl md:text-7xl font-light leading-tight">
-            <span className="flex items-center">Let's start a</span>
+            <span className="flex items-center">Let&apos;s start a</span>
             <span>project together</span>
           </h1>
           <div className="hidden md:flex flex-col items-end">
