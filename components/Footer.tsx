@@ -37,7 +37,7 @@ export default function Footer() {
               className="rounded-full"
             />
             <h2 className="text-5xl font-bold leading-tight">
-              Let's work
+              Let&apos;s work
               <br />
               together
             </h2>
