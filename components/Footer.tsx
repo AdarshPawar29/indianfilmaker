@@ -15,7 +15,7 @@ export default function Footer() {
           hour: "2-digit",
           minute: "2-digit",
           hour12: true,
-          timeZone: "Europe/Amsterdam",
+          timeZone: "Asia/Kolkata",
         })
       );
     };
@@ -68,18 +68,18 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="border border-gray-700 rounded-full py-3 px-6">
               <a
-                href="mailto:info@dennissnellenberg.com"
+                href="mailto:info@indianfilmaker.com"
                 className="hover:text-gray-300 transition-colors"
               >
-                info@dennissnellenberg.com
+                info@indianfilmaker.com
               </a>
             </div>
             <div className="border border-gray-700 rounded-full py-3 px-6">
               <a
-                href="tel:+31627847430"
+                href="tel:+919619511017"
                 className="hover:text-gray-300 transition-colors"
               >
-                +31 6 27 84 74 30
+                +91 96195 11017
               </a>
             </div>
           </div>
@@ -95,13 +95,13 @@ export default function Footer() {
           <div>
             <div className="mb-2">
               <h5 className="text-sm font-semibold text-gray-500">VERSION</h5>
-              <p className="text-sm">2022 © Edition</p>
+              <p className="text-sm">2024 © Edition</p>
             </div>
             <div>
               <h5 className="text-sm font-semibold text-gray-500">
                 LOCAL TIME
               </h5>
-              <p className="text-sm">{localTime} CEST</p>
+              <p className="text-sm">{localTime} IST</p>
             </div>
           </div>
           <div>
@@ -111,17 +111,17 @@ export default function Footer() {
             <ul className="flex space-x-4">
               {[
                 {
-                  name: "Awwwards",
-                  url: "https://www.awwwards.com/dennissnellenberg/",
+                  name: "YouTube",
+                  url: "https://www.youtube.com/@BhaveshKatwaleplus",
                 },
                 {
                   name: "Instagram",
-                  url: "https://www.instagram.com/codebydennis/",
+                  url: "https://www.instagram.com/indianfilmaker/",
                 },
-                { name: "Twitter", url: "https://twitter.com/codebydennis" },
+                { name: "Twitter", url: "https://twitter.com/indianfilmaker" },
                 {
                   name: "LinkedIn",
-                  url: "https://www.linkedin.com/in/dennissnellenberg/",
+                  url: "https://www.linkedin.com/in/indianfilmaker/",
                 },
               ].map((social) => (
                 <li key={social.name}>

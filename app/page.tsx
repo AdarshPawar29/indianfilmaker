@@ -1,10 +1,11 @@
+import Header from "@/components/Header";
 import Hero from "@/components/HeroSection";
-// Check if the Footer component exists and the path is correct
-import Footer from "@/components/Footer"; // Ensure this path is correct
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <>
+      <Header />
       <Hero />
       <Footer />
     </>
