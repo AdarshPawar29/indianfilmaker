@@ -74,7 +74,7 @@ const HeroSection: React.FC = () => {
         <div className="name-h1">
           <h1 className="font-neue text-white text-xl">
             <span ref={nameWrapRef} className="name-wrap">
-              Bhavesh Katwale<span className="spacer">—</span>
+              Bhavesh K.<span className="spacer">—</span>
             </span>
           </h1>
         </div>
