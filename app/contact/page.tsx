@@ -25,23 +25,23 @@ export default function ContactPage() {
     console.log("Form submitted:", formData);
 
     // Send the form data to the email API
-    const response = await fetch("/api/send-email", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        to: "adarshpawar28@gmail.com",
-        subject: `New message from ${formData.name}`,
-        body: formData.message,
-      }),
-    });
+    // const response = await fetch("/api/send-email", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     to: "adarshpawar28@gmail.com",
+    //     subject: `New message from ${formData.name}`,
+    //     body: formData.message,
+    //   }),
+    // });
 
-    if (response.ok) {
-      console.log("Email sent successfully");
-    } else {
-      console.error("Failed to send email");
-    }
+    // if (response.ok) {
+    //   console.log("Email sent successfully");
+    // } else {
+    //   console.error("Failed to send email");
+    // }
   };
 
   useEffect(() => {
