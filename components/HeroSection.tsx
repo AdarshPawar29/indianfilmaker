@@ -1,34 +1,22 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface RollProps {
-  duration: number;
-  ease?: string;
-}
-
 const HeroSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const nameWrapRef = useRef<HTMLSpanElement>(null);
+  const [timeline, setTimeline] = useState<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
     if (!nameWrapRef.current || !containerRef.current) return;
 
-    let direction = 1; // 1 = forward, -1 = backward scroll
-
     const element = nameWrapRef.current;
     const container = containerRef.current;
-
-    // Remove any existing clones
-    const existingClone = element.parentNode?.querySelector(".name-wrap-clone");
-    if (existingClone) {
-      existingClone.remove();
-    }
 
     // Create a single clone
     const clone = element.cloneNode(true) as HTMLElement;
@@ -60,15 +48,15 @@ const HeroSection: React.FC = () => {
       duration: 10,
     });
 
-    ScrollTrigger.create({
+    setTimeline(tl);
+
+    const scrollTrigger = ScrollTrigger.create({
       trigger: container,
       start: "top top",
       end: "bottom bottom",
       onUpdate: (self) => {
-        if (self.direction !== direction) {
-          direction *= -1;
-          gsap.to(tl, { timeScale: direction, overwrite: true });
-        }
+        const direction = self.direction === 1 ? 1 : -1;
+        gsap.to(tl, { timeScale: direction, overwrite: true });
       },
     });
 
@@ -83,6 +71,8 @@ const HeroSection: React.FC = () => {
     return () => {
       resizeObserver.disconnect();
       tl.kill();
+      scrollTrigger.kill();
+      clone.remove();
     };
   }, []);
 
