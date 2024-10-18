@@ -16,10 +16,6 @@ interface ParallaxCardProps {
   className?: string;
 }
 
-interface LayerStyle extends React.CSSProperties {
-  "--index"?: number;
-}
-
 const ParallaxCard: React.FC<ParallaxCardProps> = ({
   backgroundImage,
   foregroundImage,
