@@ -81,7 +81,7 @@ const NavigationBar: React.FC = () => {
             <div className="stripe"></div>
             <ul className="links-wrap">
               <li className="btn btn-link active">
-                <a
+                <Link
                   href="/"
                   className="btn-click magnetic"
                   data-strength="24"
@@ -90,11 +90,11 @@ const NavigationBar: React.FC = () => {
                   <span className="btn-text">
                     <span className="btn-text-inner">Home</span>
                   </span>
-                </a>
+                </Link>
               </li>
               {navLinks.map(({ href, text }) => (
                 <li key={href} className="btn btn-link">
-                  <a
+                  <Link
                     href={href}
                     className="btn-click magnetic"
                     data-strength="24"
@@ -103,7 +103,7 @@ const NavigationBar: React.FC = () => {
                     <span className="btn-text">
                       <span className="btn-text-inner">{text}</span>
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -114,7 +114,7 @@ const NavigationBar: React.FC = () => {
               <h5>Socials</h5>
               <ul>
                 <li className="btn btn-link btn-link-external">
-                  <a
+                  <Link
                     href="https://www.instagram.com"
                     target="_blank"
                     className="btn-click magnetic"
@@ -125,7 +125,7 @@ const NavigationBar: React.FC = () => {
                     <span className="btn-text">
                       <span className="btn-text-inner">Instagram</span>
                     </span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -136,20 +136,20 @@ const NavigationBar: React.FC = () => {
       <div className="nav-bar" ref={navRef}>
         <div className="credits-top">
           <div className="btn btn-link btn-left-top">
-            <a
+            <Link
               href="/"
               className="btn-click magnetic"
               data-strength="20"
               data-strength-text="10"
             >
               <span className="btn-text">indianfilmaker</span>
-            </a>
+            </Link>
           </div>
         </div>
         <ul className="links-wrap">
           {navLinks.map(({ href, text }) => (
             <li key={href} className="btn btn-link">
-              <a
+              <Link
                 href={href}
                 className="btn-click magnetic"
                 data-strength="20"
@@ -158,7 +158,7 @@ const NavigationBar: React.FC = () => {
                 <span className="btn-text">
                   <span className="btn-text-inner">{text}</span>
                 </span>
-              </a>
+              </Link>
             </li>
           ))}
           <li className="btn btn-link btn-menu" onClick={toggleMenu}>
