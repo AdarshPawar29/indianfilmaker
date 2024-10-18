@@ -10,6 +10,16 @@ export default function Home() {
         heroTitle="Osaka"
         subtitle="Osaka Castle"
         details="Osaka, Japan"
+        width="600px"
+        height="300px"
+        icon={<Globe size={20} />}
+      />
+      <ParallaxCard
+        foregroundImage="/assets/imgs/do-not-copy-osaka-tower.png"
+        backgroundImage="/assets/imgs/do-not-copy-osaka-sky.jpeg"
+        heroTitle="Osaka"
+        subtitle="Osaka Castle"
+        details="Osaka, Japan"
         width="400px"
         height="400px"
         icon={<Globe size={20} />}

@@ -27,16 +27,14 @@ const ParallaxCard: React.FC<ParallaxCardProps> = ({
   details,
   icon,
   width = "600px",
-  height = "auto",
+  height = "330px",
   className = "",
 }) => {
   const movement = useParallax();
 
   const baseWidth = parseInt(width);
-  // Increase the padding factor for horizontal movement
-  const horizontalPadding = 1.5; // Added padding factor
+  const horizontalPadding = 1.5;
   const imageWidth = Math.max(660, baseWidth + 60);
-  // Calculate extra space needed with the padding factor
   const extraWidth =
     Math.max(Math.abs(movement.x.min), Math.abs(movement.x.max)) *
     2 *
@@ -59,12 +57,11 @@ const ParallaxCard: React.FC<ParallaxCardProps> = ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: `${imageWidth + extraWidth}px`, // Increased width with padding
+    width: `${imageWidth + extraWidth}px`,
     height: `calc(100% + ${extraHeight}px)`,
     objectFit: "cover",
     userSelect: "none",
     pointerEvents: "none",
-    // Added to ensure image maintains aspect ratio while covering
     minWidth: "100%",
     minHeight: "100%",
   };
@@ -72,60 +69,38 @@ const ParallaxCard: React.FC<ParallaxCardProps> = ({
   return (
     <article style={containerStyle} className={className}>
       <div className="assets absolute inset-0 rounded-[4em] overflow-hidden">
-        <div className="absolute inset-0 overflow-visible z-[1]">
-          {" "}
-          <img
-            src={backgroundImage}
-            alt=""
-            style={{
-              ...commonImageStyles,
-              filter: "saturate(1.5) brightness(0.9)",
-              transform: `translate(-50%, -50%) translate(calc(var(--x) * ${movement.x.min}px), calc(var(--y) * ${movement.y.min}px))`,
-            }}
-          />
-        </div>
+        <img
+          src={backgroundImage}
+          alt=""
+          style={{
+            ...commonImageStyles,
+            filter: "saturate(1.5) brightness(0.9)",
+            transform: `translate(-50%, -50%) translate(calc(var(--x) * 0px), calc(var(--y) * ${movement.y.min}px))`,
+          }}
+          className="z-[1]"
+        />
 
         <h3
-          className="absolute left-1/2 top-[15%] m-0 text-8xl uppercase text-white z-[2]"
+          className="absolute left-1/2 top-[5%] m-0 text-8xl uppercase text-white font-bold z-[2]"
           style={{
-            transform: `translate(-50%, 0) translate(calc(var(--x) * ${-movement
-              .x.min}px), calc(var(--y) * ${movement.y.min}px))`,
+            transform: `translate(-50%, 0) translate(calc(var(--x) * 5px), calc(var(--y) * ${movement.y.min}px))`,
           }}
         >
           {heroTitle}
         </h3>
 
-        <div className="absolute inset-0 overflow-visible z-[3]">
-          {" "}
-          <img
-            src={foregroundImage}
-            alt=""
-            style={{
-              ...commonImageStyles,
-              transform: `translate(-50%, -50%) translate(calc(var(--x) * ${movement.x.max}px), calc(var(--y) * ${movement.y.max}px))`,
-            }}
-          />
-        </div>
-      </div>
+        <img
+          src={foregroundImage}
+          alt=""
+          style={{
+            ...commonImageStyles,
+            transform: `translate(-50%, -50%) translate(calc(var(--x) * 20px), calc(var(--y) * ${movement.y.max}px))`,
+          }}
+          className="z-[3]"
+        />
 
-      <div className="blur absolute inset-0">
-        <div>
-          {[1, 2, 3, 4, 5].map((index) => {
-            const layerStyle: LayerStyle = {
-              position: "absolute",
-              inset: 0,
-              backgroundColor: "hsla(0,0%,60%,0.05)",
-              "--index": index,
-              backdropFilter: `blur(calc(${
-                Math.sin(((5 - index) / 5) * 90 * (Math.PI / 180)) * 30
-              }px))`,
-              mask: `radial-gradient(150% 130% at 45% 90%, #fff 15%, #0000 calc((15 + ${
-                Math.sin((index / 5) * 90 * (Math.PI / 180)) * 15
-              }) * 1%))`,
-            } as LayerStyle;
-
-            return <div key={index} style={layerStyle} />;
-          })}
+        <div className="parallax-blur z-[4]">
+          <img src={foregroundImage} alt="" />
         </div>
       </div>
 
