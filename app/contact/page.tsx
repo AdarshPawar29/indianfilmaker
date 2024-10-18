@@ -112,26 +112,27 @@ export default function ContactPage() {
                     number: "01",
                     label: "What's your name?",
                     name: "name",
-                    placeholder: "John Doe *",
+                    placeholder: "Arun Choudhary *",
                   },
                   {
                     number: "02",
                     label: "What's your email?",
                     name: "email",
                     type: "email",
-                    placeholder: "john@doe.com *",
+                    placeholder: "arun@choudhary.com *",
                   },
                   {
                     number: "03",
                     label: "What's the name of your organization?",
                     name: "company",
-                    placeholder: "John & Doe ®",
+                    placeholder: "Choudhary & Choudhary ®",
                   },
                   {
                     number: "04",
                     label: "What services are you looking for?",
                     name: "service",
-                    placeholder: "Web Design, Web Development ...",
+                    placeholder:
+                      "Photography, Videography, make a movie ;) etc.",
                   },
                   {
                     number: "05",

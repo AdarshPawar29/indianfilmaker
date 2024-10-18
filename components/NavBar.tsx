@@ -23,7 +23,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) => {
     if (window.scrollY > 100) {
       setShowHamburger(true);
     } else {
-      setShowHamburger(false);
+      showHamburger && setShowHamburger(false);
     }
   };
 
@@ -37,6 +37,55 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) => {
       gsap.to(".fixed-nav", { x: "0%", ease: "power4.inOut", duration: 0.8 });
     }
   };
+
+  const handleNavLinkClick = () => {
+    if (isMenuOpen) {
+      toggleMenu();
+    }
+  };
+
+  // Apply the magnetic effect to elements
+  useEffect(() => {
+    const magneticElements = document.querySelectorAll(".magnetic");
+
+    magneticElements.forEach((element) => {
+      const strength = parseFloat(
+        element.getAttribute("data-strength") || "50"
+      );
+
+      const handleMouseMove = (e: MouseEvent) => {
+        const rect = element.getBoundingClientRect();
+        const offsetX = (e.clientX - (rect.left + rect.width / 2)) / strength;
+        const offsetY = (e.clientY - (rect.top + rect.height / 2)) / strength;
+
+        gsap.to(element, {
+          x: offsetX,
+          y: offsetY,
+          ease: "power4.out",
+          duration: 0.8,
+        });
+      };
+
+      const handleMouseLeave = () => {
+        gsap.to(element, { x: 0, y: 0, ease: "power4.out", duration: 0.5 });
+      };
+
+      (element as HTMLElement).addEventListener("mousemove", handleMouseMove);
+      (element as HTMLElement).addEventListener("mouseleave", handleMouseLeave);
+
+      // Cleanup event listeners
+      return () => {
+        (element as HTMLElement).removeEventListener(
+          "mousemove",
+          handleMouseMove
+        );
+        (element as HTMLElement).removeEventListener(
+          "mouseleave",
+          handleMouseLeave
+        );
+      };
+    });
+  }, [isMenuOpen]); // Run this effect whenever the menu state changes
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -90,6 +139,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) => {
                   className="btn-click magnetic"
                   data-strength="24"
                   data-strength-text="12"
+                  onClick={handleNavLinkClick}
                 >
                   <span className="btn-text">
                     <span className="btn-text-inner">Home</span>
@@ -103,6 +153,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) => {
                     className="btn-click magnetic"
                     data-strength="24"
                     data-strength-text="12"
+                    onClick={handleNavLinkClick}
                   >
                     <span className="btn-text">
                       <span className="btn-text-inner">{text}</span>
@@ -125,6 +176,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) => {
                     data-strength="20"
                     data-strength-text="10"
                     rel="noopener noreferrer"
+                    onClick={handleNavLinkClick}
                   >
                     <span className="btn-text">
                       <span className="btn-text-inner">Instagram</span>
@@ -145,6 +197,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) => {
               className="btn-click magnetic"
               data-strength="20"
               data-strength-text="10"
+              onClick={handleNavLinkClick}
             >
               <span className="btn-text">indianfilmaker</span>
             </Link>
@@ -158,6 +211,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) => {
                 className="btn-click magnetic"
                 data-strength="20"
                 data-strength-text="10"
+                onClick={handleNavLinkClick}
               >
                 <span className="btn-text">
                   <span className="btn-text-inner">{text}</span>
