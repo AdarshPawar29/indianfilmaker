@@ -1,6 +1,7 @@
 "use client";
 
 import React, { CSSProperties } from "react";
+import Image from "next/image";
 import { useParallax } from "@/hooks/useParallax";
 
 interface ParallaxCardProps {
@@ -69,15 +70,20 @@ const ParallaxCard: React.FC<ParallaxCardProps> = ({
   return (
     <article style={containerStyle} className={className}>
       <div className="assets absolute inset-0 rounded-[4em] overflow-hidden">
-        <img
+        <Image
           src={backgroundImage}
           alt=""
+          width={0}
+          height={0}
           style={{
             ...commonImageStyles,
             filter: "saturate(1.5) brightness(0.9)",
             transform: `translate(-50%, -50%) translate(calc(var(--x) * 0px), calc(var(--y) * ${movement.y.min}px))`,
           }}
           className="z-[1]"
+          sizes={`(max-width: ${parseInt(width) + 60}px) 100vw, ${
+            parseInt(width) + 60
+          }px`}
         />
 
         <h3
@@ -89,18 +95,23 @@ const ParallaxCard: React.FC<ParallaxCardProps> = ({
           {heroTitle}
         </h3>
 
-        <img
+        <Image
           src={foregroundImage}
           alt=""
+          width={0}
+          height={0}
           style={{
             ...commonImageStyles,
             transform: `translate(-50%, -50%) translate(calc(var(--x) * 20px), calc(var(--y) * ${movement.y.max}px))`,
           }}
           className="z-[3]"
+          sizes={`(max-width: ${parseInt(width) + 60}px) 100vw, ${
+            parseInt(width) + 60
+          }px`}
         />
 
         <div className="parallax-blur z-[4]">
-          <img src={foregroundImage} alt="" />
+          <Image src={foregroundImage} alt="" width={0} height={0} />
         </div>
       </div>
 
