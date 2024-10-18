@@ -19,7 +19,7 @@ const NavigationBar: React.FC = () => {
     if (window.scrollY > 100) {
       setShowHamburger(true);
     } else {
-      setShowHamburger(false);
+      showHamburger && setShowHamburger(false);
     }
   };
 
@@ -39,6 +39,49 @@ const NavigationBar: React.FC = () => {
       toggleMenu();
     }
   };
+
+  // Apply the magnetic effect to elements
+  useEffect(() => {
+    const magneticElements = document.querySelectorAll(".magnetic");
+
+    magneticElements.forEach((element) => {
+      const strength = parseFloat(
+        element.getAttribute("data-strength") || "50"
+      );
+
+      const handleMouseMove = (e: MouseEvent) => {
+        const rect = element.getBoundingClientRect();
+        const offsetX = (e.clientX - (rect.left + rect.width / 2)) / strength;
+        const offsetY = (e.clientY - (rect.top + rect.height / 2)) / strength;
+
+        gsap.to(element, {
+          x: offsetX,
+          y: offsetY,
+          ease: "power4.out",
+          duration: 0.8,
+        });
+      };
+
+      const handleMouseLeave = () => {
+        gsap.to(element, { x: 0, y: 0, ease: "power4.out", duration: 0.5 });
+      };
+
+      (element as HTMLElement).addEventListener("mousemove", handleMouseMove);
+      (element as HTMLElement).addEventListener("mouseleave", handleMouseLeave);
+
+      // Cleanup event listeners
+      return () => {
+        (element as HTMLElement).removeEventListener(
+          "mousemove",
+          handleMouseMove
+        );
+        (element as HTMLElement).removeEventListener(
+          "mouseleave",
+          handleMouseLeave
+        );
+      };
+    });
+  }, [isMenuOpen]); // Run this effect whenever the menu state changes
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
