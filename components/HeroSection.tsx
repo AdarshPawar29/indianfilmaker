@@ -22,7 +22,7 @@ const HeroSection: React.FC = () => {
           priority
         /> */}
         <Image
-          src="/out.webp"
+          src="/bg.png"
           alt="Bhavesh Katwale img"
           width={0}
           height={0}
