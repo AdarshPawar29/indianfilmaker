@@ -701,7 +701,7 @@ body {
 .fixed-nav-rounded-div {
   position: absolute;
   left: 1px;
-  transform: translateX(-100%);
+  /* transform: translateX(-100%); */
   height: 100%;
   top: 0;
 }
@@ -727,7 +727,6 @@ body {
   width: 775%;
   top: 50%;
   border-radius: 50%;
-  transform: translate(-6.5%, -50%);
 }
 
 .fixed-nav .nav-row ul .btn {
@@ -1207,7 +1206,6 @@ body {
   top: calc(var(--gap-padding) / 1.5);
   right: calc(var(--gap-padding) / 1.5);
   transition: transform 0.4s cubic-bezier(0.36, 0, 0.66, 0);
-  transform: translateY(0%) scale(0) rotate(0.001deg);
   z-index: 105;
 }
 
@@ -1359,4 +1357,18 @@ main .btn-hamburger.active {
   width: 660px;
   mask: radial-gradient(50% 100% at 50% 90%, white 50%, transparent);
   filter: saturate(1.5) brightness(0.8);
+}
+
+.nav-active .fixed-nav {
+  transform: translate(0, 0);
+}
+
+.nav-active .fixed-nav-back {
+  opacity: 0.35;
+  pointer-events: all;
+}
+
+.fixed-nav {
+  transform: translateX(100%);
+  transition: transform 0.8s cubic-bezier(0.7, 0, 0.2, 1);
 }
