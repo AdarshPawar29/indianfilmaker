@@ -23,7 +23,9 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) => {
     if (window.scrollY > 100) {
       setShowHamburger(true);
     } else {
-      isMenuOpen ? null : setShowHamburger(false);
+      if (!isMenuOpen) {
+        setShowHamburger(false);
+      }
     }
   };
 
@@ -144,8 +146,8 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) => {
                     name: "LinkedIn",
                     url: "https://www.linkedin.com/in/indianfilmaker/",
                   },
-                ].map((social) => (
-                  <li className="btn btn-link btn-link-external">
+                ].map((social, index) => (
+                  <li key={index} className="btn btn-link btn-link-external">
                     <Link
                       href={social.url}
                       target="_blank"
