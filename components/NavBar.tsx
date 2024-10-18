@@ -20,7 +20,11 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleScroll = () => {
-    setShowHamburger(window.scrollY > 100);
+    if (window.scrollY > 100) {
+      setShowHamburger(true);
+    } else {
+      isMenuOpen ? null : setShowHamburger(false);
+    }
   };
 
   const toggleMenu = () => {
