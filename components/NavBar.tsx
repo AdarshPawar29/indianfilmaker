@@ -51,7 +51,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [handleScroll]);
+  }, []);
 
   const navLinks: NavLink[] = [
     { href: "/work", text: "Work" },
