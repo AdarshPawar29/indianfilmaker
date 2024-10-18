@@ -32,10 +32,12 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) => {
     if (isMenuOpen) {
       document.body.classList.remove("nav-active");
       gsap.to(".fixed-nav", { x: "100%", ease: "power4.inOut", duration: 0.8 });
+      setShowHamburger(false);
     } else {
       document.body.classList.add("nav-active");
       gsap.to(".fixed-nav", { x: "0%", ease: "power4.inOut", duration: 0.8 });
     }
+    console.log(isMenuOpen);
   };
 
   const handleNavLinkClick = () => {
@@ -125,21 +127,40 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) => {
             <div className="socials">
               <h5>Socials</h5>
               <ul>
-                <li className="btn btn-link btn-link-external">
-                  <Link
-                    href="https://www.instagram.com"
-                    target="_blank"
-                    className="btn-click magnetic"
-                    data-strength="20"
-                    data-strength-text="10"
-                    rel="noopener noreferrer"
-                    onClick={handleNavLinkClick}
-                  >
-                    <span className="btn-text">
-                      <span className="btn-text-inner">Instagram</span>
-                    </span>
-                  </Link>
-                </li>
+                {[
+                  {
+                    name: "YouTube",
+                    url: "https://www.youtube.com/@BhaveshKatwaleplus",
+                  },
+                  {
+                    name: "Instagram",
+                    url: "https://www.instagram.com/indianfilmaker/",
+                  },
+                  {
+                    name: "Twitter",
+                    url: "https://twitter.com/indianfilmaker",
+                  },
+                  {
+                    name: "LinkedIn",
+                    url: "https://www.linkedin.com/in/indianfilmaker/",
+                  },
+                ].map((social) => (
+                  <li className="btn btn-link btn-link-external">
+                    <Link
+                      href={social.url}
+                      target="_blank"
+                      className="btn-click magnetic"
+                      data-strength="20"
+                      data-strength-text="10"
+                      rel="noopener noreferrer"
+                      onClick={handleNavLinkClick}
+                    >
+                      <span className="btn-text">
+                        <span className="btn-text-inner">{social.name}</span>
+                      </span>
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

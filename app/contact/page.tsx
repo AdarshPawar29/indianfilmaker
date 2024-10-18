@@ -54,7 +54,7 @@ export default function ContactPage() {
 
   return (
     <div className="bg-[#1c1d20]">
-      <NavigationBar />
+      <NavigationBar className="theme-dark" />
       <div className="min-h-screen text-white font-neue">
         <div className="container mx-auto px-4 py-16 mt-24">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 items-start">
@@ -112,20 +112,20 @@ export default function ContactPage() {
                     number: "01",
                     label: "What's your name?",
                     name: "name",
-                    placeholder: "Arun Choudhary *",
+                    placeholder: "Christopher Nolan",
                   },
                   {
                     number: "02",
                     label: "What's your email?",
                     name: "email",
                     type: "email",
-                    placeholder: "arun@choudhary.com *",
+                    placeholder: "chris.batman@gmail.com",
                   },
                   {
                     number: "03",
                     label: "What's the name of your organization?",
                     name: "company",
-                    placeholder: "Choudhary & Choudhary ®",
+                    placeholder: "Wayne Enterprises",
                   },
                   {
                     number: "04",

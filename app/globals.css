@@ -294,6 +294,17 @@ body {
   .home-header .container {
     padding-bottom: calc(var(--vh, 1vh) * 9);
   }
+
+  .socials li {
+    display: inline-flex;
+    font-size: 1em;
+    margin-right: 0;
+  }
+
+  .socials,
+  .socials ul {
+    width: 100%;
+  }
 }
 
 /*Globe animation*/
@@ -1372,4 +1383,47 @@ main .btn-hamburger.active {
 .fixed-nav {
   transform: translateX(100%);
   transition: transform 0.8s cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+li,
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.socials li {
+  display: inline-flex;
+  font-size: 0.85em;
+}
+
+.socials h5 {
+  padding-left: calc(var(--gap-padding) * 0.5);
+  margin-bottom: 1em;
+}
+
+.stripe {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.theme-dark .stripe {
+  background-color: var(--color-border-light);
+}
+
+.fixed-nav .nav-row h5 {
+  margin-bottom: 3em;
+}
+
+h5 {
+  font-weight: 450;
+  font-style: normal;
+  font-size: 0.7em;
+  line-height: 0.9;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.5;
 }
