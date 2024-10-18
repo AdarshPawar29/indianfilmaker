@@ -40,7 +40,7 @@ export default function Header() {
               About
             </Link>
             <Link href="/contact" className="hover:underline">
-              Contact
+              Contact1
             </Link>
           </nav>
         )}
