@@ -13,12 +13,22 @@ const HeroSection: React.FC = () => {
       className="home-header relative w-full h-screen bg-gray-300 overflow-hidden"
     >
       <div className="personal-image">
-        <Image
+        {/* <Image
           src="/DSC07033.jpg"
           alt="Bhavesh Katwale img"
           width={0}
           height={0}
           sizes="100vw"
+          priority
+        /> */}
+        <Image
+          src="/out.webp"
+          alt="Bhavesh Katwale img"
+          width={0}
+          height={0}
+          sizes="100vw"
+          layout="fill"
+          objectFit="cover"
           priority
         />
       </div>
