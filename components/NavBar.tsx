@@ -34,6 +34,12 @@ const NavigationBar: React.FC = () => {
     }
   };
 
+  const handleNavLinkClick = () => {
+    if (isMenuOpen) {
+      toggleMenu();
+    }
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -86,6 +92,7 @@ const NavigationBar: React.FC = () => {
                   className="btn-click magnetic"
                   data-strength="24"
                   data-strength-text="12"
+                  onClick={handleNavLinkClick}
                 >
                   <span className="btn-text">
                     <span className="btn-text-inner">Home</span>
@@ -99,6 +106,7 @@ const NavigationBar: React.FC = () => {
                     className="btn-click magnetic"
                     data-strength="24"
                     data-strength-text="12"
+                    onClick={handleNavLinkClick}
                   >
                     <span className="btn-text">
                       <span className="btn-text-inner">{text}</span>
@@ -121,6 +129,7 @@ const NavigationBar: React.FC = () => {
                     data-strength="20"
                     data-strength-text="10"
                     rel="noopener noreferrer"
+                    onClick={handleNavLinkClick}
                   >
                     <span className="btn-text">
                       <span className="btn-text-inner">Instagram</span>
@@ -141,6 +150,7 @@ const NavigationBar: React.FC = () => {
               className="btn-click magnetic"
               data-strength="20"
               data-strength-text="10"
+              onClick={handleNavLinkClick}
             >
               <span className="btn-text">indianfilmaker</span>
             </Link>
@@ -154,6 +164,7 @@ const NavigationBar: React.FC = () => {
                 className="btn-click magnetic"
                 data-strength="20"
                 data-strength-text="10"
+                onClick={handleNavLinkClick}
               >
                 <span className="btn-text">
                   <span className="btn-text-inner">{text}</span>
