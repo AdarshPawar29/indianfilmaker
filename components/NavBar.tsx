@@ -23,7 +23,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) => {
     if (window.scrollY > 100) {
       setShowHamburger(true);
     } else {
-      showHamburger && setShowHamburger(false);
+      setShowHamburger(false);
     }
   };
 
