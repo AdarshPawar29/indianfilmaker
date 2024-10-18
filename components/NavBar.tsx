@@ -10,7 +10,11 @@ interface NavLink {
   text: string;
 }
 
-const NavigationBar: React.FC = () => {
+interface NavigationBarProps {
+  className?: string;
+}
+
+const NavigationBar: React.FC<NavigationBarProps> = ({ className = "" }) => {
   const navRef = useNavigationEffects();
   const [showHamburger, setShowHamburger] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,7 +52,7 @@ const NavigationBar: React.FC = () => {
   ];
 
   return (
-    <>
+    <div className={className}>
       {showHamburger && (
         <div
           className={`btn btn-hamburger ${isMenuOpen ? "active" : ""}`}
@@ -69,7 +73,7 @@ const NavigationBar: React.FC = () => {
       )}
 
       <div className="overlay fixed-nav-back"></div>
-      <div className="fixed-nav theme-dark">
+      <div className="fixed-nav">
         <div className="fixed-nav-rounded-div">
           <div className="rounded-div-wrap">
             <div className="rounded-div"></div>
@@ -174,7 +178,7 @@ const NavigationBar: React.FC = () => {
           </li>
         </ul>
       </div>
-    </>
+    </div>
   );
 };
 

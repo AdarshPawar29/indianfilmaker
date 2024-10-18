@@ -922,7 +922,7 @@ body {
   height: 100%;
   padding: 0 2.5em;
   z-index: 2;
-  color: var(--color-white);
+  color: var(--color-dark);
   position: relative;
   transform: rotate(0.001deg);
   pointer-events: none;
