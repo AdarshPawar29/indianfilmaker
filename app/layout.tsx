@@ -4,11 +4,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Bhavesh Katwale | Cinematographer & Photographer",
   description:
-    "Welcome to Bhavesh Katwale’s portfolio showcasing stunning cinematography and photography that captures the essence of storytelling through visuals.",
+    "Welcome to Bhavesh Katwale's portfolio showcasing stunning cinematography and photography that captures the essence of storytelling through visuals.",
   openGraph: {
     title: "Bhavesh Katwale | Cinematographer & Photographer",
     description:
-      "Explore Bhavesh Katwale’s visual portfolio, featuring breathtaking cinematography and photography projects that tell compelling stories.",
+      "Explore Bhavesh Katwale's visual portfolio, featuring breathtaking cinematography and photography projects that tell compelling stories.",
     url: "https://www.indianfilmaker.com/bg.jpeg",
     images: [
       {
@@ -36,7 +36,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+      <body className="antialiased" data-scroll-container>
+        {children}
+      </body>
     </html>
   );
 }
